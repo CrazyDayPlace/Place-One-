@@ -903,7 +903,7 @@ local aa = {
                 n(
                 "Frame",
                 {
-                    Position = UDim2.new(1, -30, 1, -30),
+                    Position = UDim2.new(1, -10, 1, 0),
                     ZIndex = 125,
                     Size = UDim2.new(0, 310, 1, -30),
                     AnchorPoint = Vector2.new(1, 1),
@@ -930,8 +930,7 @@ local aa = {
             q.Show = q.Show
             q.Duration = q.Duration or nil
             q.Buttons = q.Buttons or {}
-            local zz = UDim2.new(1, 0, 1, 0)
-            local r = {Closed = false}
+            local r = {Closed = false, Size = UDim2.new(1, 0, 1, 0)}
             r.AcrylicPaint = k.AcrylicPaint()
             r.Title =
                 n(
@@ -1035,7 +1034,9 @@ local aa = {
                 }
             )
             if q.Content == "" then
-                zz = UDim2.new(1, 0, 0.85, 0)
+                if q.SubContent == "" then
+                    r.Size = UDim2.new(1, 0, 0.785, 0) 
+                end
                 r.ContentLabel.Visible = false
             end
             if q.SubContent == "" then
@@ -1044,7 +1045,7 @@ local aa = {
             r.Root =
                 n(
                 "Frame",
-                {BackgroundTransparency = 1, Size = zz, Position = UDim2.fromScale(1, 0)},
+                {BackgroundTransparency = 1, Size = r.Size, Position = UDim2.fromScale(1, 0)},
                 {r.AcrylicPaint.Frame, r.Title, r.CloseButton, r.LabelHolder}
             )
             r.Holder =
