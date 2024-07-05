@@ -903,7 +903,7 @@ local aa = {
                 n(
                 "Frame",
                 {
-                    Position = UDim2.new(1, -10, 1, 0),
+                    Position = UDim2.new(1, -10, 1, -5),
                     ZIndex = 125,
                     Size = UDim2.new(0, 310, 1, -30),
                     AnchorPoint = Vector2.new(1, 1),
@@ -917,7 +917,7 @@ local aa = {
                             HorizontalAlignment = Enum.HorizontalAlignment.Center,
                             SortOrder = Enum.SortOrder.LayoutOrder,
                             VerticalAlignment = Enum.VerticalAlignment.Bottom,
-                            Padding = UDim.new(0, 15)
+                            Padding = UDim.new(0, 6.75)
                         }
                     )
                 }
