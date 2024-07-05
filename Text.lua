@@ -1,5 +1,0 @@
-return {
-  nil,
-  nil,
-  nil
-}
