@@ -903,7 +903,7 @@ local aa = {
                 n(
                 "Frame",
                 {
-                    Position = UDim2.new(1, -30, 1, -30),
+                    Position = UDim2.new(1, -10, 1, 0),
                     ZIndex = 125,
                     Size = UDim2.new(0, 310, 1, -30),
                     AnchorPoint = Vector2.new(1, 1),
@@ -917,7 +917,7 @@ local aa = {
                             HorizontalAlignment = Enum.HorizontalAlignment.Center,
                             SortOrder = Enum.SortOrder.LayoutOrder,
                             VerticalAlignment = Enum.VerticalAlignment.Bottom,
-                            Padding = UDim.new(0, 20)
+                            Padding = UDim.new(0, 15)
                         }
                     )
                 }
@@ -930,8 +930,7 @@ local aa = {
             q.Show = q.Show
             q.Duration = q.Duration or nil
             q.Buttons = q.Buttons or {}
-            local zz = UDim2.new(1, 0, 1, 0)
-            local r = {Closed = false}
+            local r = {Closed = false, Size = UDim2.new(1, 0, 1, 0)}
             r.AcrylicPaint = k.AcrylicPaint()
             r.Title =
                 n(
@@ -1035,21 +1034,20 @@ local aa = {
                 }
             )
             if q.Content == "" then
-                zz = UDim2.new(1, 0, 0.85, 0)
-                print("dad")
-            end
-            r.Root =
-                n(
-                "Frame",
-                {BackgroundTransparency = 1, Size = zz, Position = UDim2.fromScale(1, 0)},
-                {r.AcrylicPaint.Frame, r.Title, r.CloseButton, r.LabelHolder}
-            )
-            if q.Content == "" then
+                if q.SubContent == "" then
+                    r.Size = UDim2.new(1, 0, 0.785, 0) 
+                end
                 r.ContentLabel.Visible = false
             end
             if q.SubContent == "" then
                 r.SubContentLabel.Visible = false
             end
+            r.Root =
+                n(
+                "Frame",
+                {BackgroundTransparency = 1, Size = r.Size, Position = UDim2.fromScale(1, 0)},
+                {r.AcrylicPaint.Frame, r.Title, r.CloseButton, r.LabelHolder}
+            )
             r.Holder =
                 n("Frame", {BackgroundTransparency = 1, Size = UDim2.new(1, 0, 0, 200), Parent = o.Holder}, {r.Root})
             local s = i.GroupMotor.new {Scale = 1, Offset = 60}
