@@ -454,7 +454,7 @@ local aa = {
                     ),
                     j(
                         "Frame",
-                        {BackgroundTransparency = 1, Size = UDim2.fromScale(1, 1), ZIndex = 2},
+                        {BackgroundTransparency = 1, Size = UDim2.fromScale(1, 1), ZIndex = 150},
                         {
                             j("UICorner", {CornerRadius = UDim.new(0, 8)}),
                             j("UIStroke", {Transparency = 0.5, Thickness = 1, ThemeTag = {Color = "AcrylicBorder"}})
@@ -2995,7 +2995,7 @@ local aa = {
                         {
                             Size = UDim2.new(1, -5, 0, 32),
                             BackgroundTransparency = 1,
-                            ZIndex = 23,
+                            ZIndex = 175,
                             Text = "",
                             Parent = t,
                             ThemeTag = {BackgroundColor3 = "DropdownOption"}
@@ -4479,7 +4479,11 @@ local aa = {
                 ["lucide-x-octagon"] = "rbxassetid://10747384037",
                 ["lucide-x-square"] = "rbxassetid://10747384217",
                 ["lucide-zoom-in"] = "rbxassetid://10747384552",
-                ["lucide-zoom-out"] = "rbxassetid://10747384679"
+                ["lucide-zoom-out"] = "rbxassetid://10747384679",
+                ["lucide-angle-double-small-up"] = "rbxassetid://18353424207",
+                ["lucide-angle-double-small-down"] = "rbxassetid://18353445168",
+                ["lucide-angle-double-small-left"] = "rbxassetid://18353473330",
+                ["lucide-angle-double-small-right"] = "rbxassetid://18353450985",
             }
         }
     end,
