@@ -84,6 +84,16 @@ local Function = {} do
             return t
         end
     end
+
+    function Function:SetNoclip(a)
+        for o, x in ipairs(game:GetService"Players".LocalPlayer.Character:GetChildren()) do
+            if x:IsA("BasePart") and x.CanCollide ~= a then
+                x.CanCollide = a
+            end
+        end
+    end
+
 end
 
 return Function
+
