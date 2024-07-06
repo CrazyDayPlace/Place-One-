@@ -75,6 +75,15 @@ local Function = {} do
         }
         return q
     end
+
+    function Function:TextG(t, x)
+        if string.find(t, x) then
+            local g = t:gsub(x, "")
+            return g
+        else
+            return t
+        end
+    end
 end
 
 return Function
