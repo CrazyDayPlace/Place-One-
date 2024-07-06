@@ -93,7 +93,20 @@ local Function = {} do
         end
     end
 
+    function Function:ObjectGet(a)
+        local dist, thing = math.huge, false
+        for o, x in ipairs(a:GetChildren()) do
+            if x:IsA("Part") or x:IsA("MeshPart") then
+                local g = (game:GetService"Players".LocalPlayer.Character.HumanoidRootPart.Position - x.Position).magnitude
+                if g < dist then
+                    dist = g
+                    thing = x
+                end
+            end
+        end
+        return thing
+    end
+
 end
 
 return Function
-
