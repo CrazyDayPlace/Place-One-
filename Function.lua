@@ -1,7 +1,6 @@
-return
-local Function = {}
+return a
 
-function Function:HexColor(q)
+function a:HexColor(q)
     local int = math.floor(q.r*255)*256^2+math.floor(q.g*255)*256+math.floor(q.b*255)
     local current = int
     local final = ""
