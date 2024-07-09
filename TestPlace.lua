@@ -2012,12 +2012,13 @@ local aa = {
                     s(
                         "ScrollingFrame",
                         {
-                            Size = UDim2.new(1, 1, 1, 0),
+                            Size = UDim2.new(1, 0, 0.75, 0),
                             BackgroundTransparency = 0.8,
                             Parent = P.Root,
                             ScrollBarImageTransparency = 1,
                             ScrollBarThickness = 0,
                             BorderSizePixel = 0,
+                            Position = UDim2.fromOffset(0, 45),
                             CanvasSize = UDim2.new(0, 0, 2, 0),
                             ScrollingDirection = Enum.ScrollingDirection.Y
                         }
@@ -2033,15 +2034,15 @@ local aa = {
                         TextXAlignment = Enum.TextXAlignment.Left,
                         TextYAlignment = Enum.TextYAlignment.Top,
                         Size = UDim2.new(1, -40, 1, 0),
-                        Position = UDim2.fromOffset(20, 60),
+                        Position = UDim2.fromOffset(20, 15),
                         BackgroundTransparency = 1,
                         Parent = XX,
                         ClipsDescendants = false,
                         ThemeTag = {TextColor3 = "Text"}
                     }
                 )
-                P.Title.Parent = XX
-                CAW = Vector2.new(500, 425)
+                P.Title.Position = UDim2.fromOffset(0, 10)
+                P.Title.TextXAlignment = "Center"
                 else
                     Q =
                     s(
