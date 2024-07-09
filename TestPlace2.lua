@@ -2012,13 +2012,14 @@ local aa = {
                     s(
                         "ScrollingFrame",
                         {
-                            Size = UDim2.new(1, 1, 1, 0),
+                            Size = UDim2.new(1, 0, 1, 0),
                             BackgroundTransparency = 0.8,
                             Parent = P.Root,
                             ScrollBarImageTransparency = 1,
                             ScrollBarThickness = 0,
                             BorderSizePixel = 0,
-                            CanvasSize = UDim2.fromOffset(0, 2),
+                            Position = UDim2.fromOffset(20, 60),
+                            CanvasSize = UDim2.new(0, 0, 2, 0),
                             ScrollingDirection = Enum.ScrollingDirection.Y
                         }
                     )
@@ -2041,7 +2042,6 @@ local aa = {
                     }
                 )
                 P.Title.Parent = XX
-                CAW = Vector2.new(500, 425)
                 else
                     Q =
                     s(
