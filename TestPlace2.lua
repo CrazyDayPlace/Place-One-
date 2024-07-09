@@ -195,6 +195,7 @@ local aa = {
                 Title = D.Title,
                 SubTitle = D.SubTitle,
                 UpdateDate = D.UpdateDate,
+                Scroll = D.Scroll,
                 UpdateLog = D.UpdateLog,
                 IconVisual = D.IconVisual,
                 TabWidth = D.TabWidth
@@ -1678,6 +1679,7 @@ local aa = {
             o.Frame,
             function()
                 p.Window:Dialog {
+                    Scroll = n.Scroll or false,
                     Title = n.UpdateDate or "00/00/0000 [V Title]",
                     Content = n.UpdateLog or "● Content",
                     Buttons = {{Title = "Close"}}
@@ -1799,6 +1801,7 @@ local aa = {
                 SubTitle = t.SubTitle,
                 UpdateDate = t.UpdateDate,
                 UpdateLog = t.UpdateLog,
+                Scroll = t.Scroll,
                 IconVisual = t.IconVisual,
                 Parent = v.Root,
                 Window = v
@@ -2005,58 +2008,24 @@ local aa = {
             function v.Dialog(N, O)
                 local P = M:Create()
                 P.Title.Text = O.Title
-                local Q
-                local CAW
+                local NIO
                 if O.Scroll and O.Scroll == true then
-                    local ZZ =
+                    NIO =
                     s(
-                        "Frame",
-                        {
-                            Size = UDim2.new(1, 0, 0, 45),
-                            Position = UDim2.new(0, 0, 1, -475),
-                            ThemeTag = {BackgroundColor3 = "DialogHolder"}
-                        }
-                    )
-                    local XX = 
-                    s(
-                        "ScrollingFrame",
-                        {
-                            Size = UDim2.new(1, 0, 0.75, 0),
-                            BackgroundTransparency = 0.8,
-                            Parent = P.Root,
-                            ScrollBarImageTransparency = 1,
-                            ScrollBarThickness = 0,
-                            BorderSizePixel = 0,
-                            Position = UDim2.fromOffset(0, 40),
-                            CanvasSize = UDim2.new(0, 0, 2, 0),
-                            ScrollingDirection = Enum.ScrollingDirection.Y
-                        }
-                    )
-                    Q =
-                    s(
-                    "TextLabel",
+                    "ScrollingFrame",
                     {
-                        FontFace = Font.new "rbxasset://fonts/families/GothamSSm.json",
-                        Text = O.Content,
-                        TextColor3 = Color3.fromRGB(240, 240, 240),
-                        TextSize = 15,
-                        TextXAlignment = Enum.TextXAlignment.Left,
-                        TextYAlignment = Enum.TextYAlignment.Top,
-                        Size = UDim2.new(1, -40, 1, 0),
-                        Position = UDim2.fromOffset(20, 15),
+                        Size = UDim2.new(1, 0, 1, 0),
                         BackgroundTransparency = 1,
-                        Parent = XX,
-                        ClipsDescendants = false,
-                        ThemeTag = {TextColor3 = "Text"}
+                        Parent = P.Root,
+                        ScrollBarImageTransparency = 1,
+                        ScrollBarThickness = 3,
+                        BorderSizePixel = 0,
+                        CanvasSize = UDim2.new(0, 0, 2, 0),
+                        ScrollingDirection = Enum.ScrollingDirection.Y
                     }
-                )
-                P.Title.Position = UDim2.fromOffset(0, 10)
-                P.Title.Size = UDim2.new(1, 0, 0, 25)
-                P.Title.TextSize = 20
-                P.Title.TextXAlignment = "Center"
-                P.Title.Parent = ZZ
-                else
-                    Q =
+                    )
+                end
+                local Q =
                     s(
                     "TextLabel",
                     {
@@ -2069,16 +2038,17 @@ local aa = {
                         Size = UDim2.new(1, -40, 1, 0),
                         Position = UDim2.fromOffset(20, 60),
                         BackgroundTransparency = 1,
-                        Parent = P.Root,
+                        Parent = NIO or P.Root,
                         ClipsDescendants = false,
                         ThemeTag = {TextColor3 = "Text"}
                     }
                 )
-                end
                 s(
                     "UISizeConstraint",
-                    {MinSize = (CAW or Vector2.new(300, 165)), MaxSize = Vector2.new(620, math.huge), Parent = P.Root}
+                    {MinSize = Vector2.new(300, 165), MaxSize = Vector2.new(620, math.huge), Parent = P.Root}
                 )
+                P.Title.Parent = NIO or P.Root
+                P.ButtonHolderFrame.ZIndex = 10
                 P.Root.Size = UDim2.fromOffset(Q.TextBounds.X + 40, 165)
                 if Q.TextBounds.X + 40 > v.Size.X.Offset - 120 then
                     P.Root.Size = UDim2.fromOffset(v.Size.X.Offset - 120, 165)
