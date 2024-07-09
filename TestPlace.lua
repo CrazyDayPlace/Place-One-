@@ -2014,16 +2014,14 @@ local aa = {
                         {
                             Size = UDim2.fromScale(1, 1),
                             BackgroundTransparency = 0.8,
+                            Parent = P.Root,
                             ScrollBarImageTransparency = 1,
                             ScrollBarThickness = 0,
                             BorderSizePixel = 0,
-                            CanvasSize = UDim2.fromScale(0, 0),
-                            Parent = P.Root,
+                            CanvasSize = UDim2.fromScale(0, 2),
                             ScrollingDirection = Enum.ScrollingDirection.Y
                         }
                     )
-                    P.Title.Parent = XX
-                    CAW = Vector2.new(500, 425)
                     Q =
                     s(
                     "TextLabel",
@@ -2042,6 +2040,8 @@ local aa = {
                         ThemeTag = {TextColor3 = "Text"}
                     }
                 )
+                P.Title.Parent = XX
+                CAW = Vector2.new(500, 425)
                 else
                     Q =
                     s(
