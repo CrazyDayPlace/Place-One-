@@ -2012,13 +2012,13 @@ local aa = {
                     s(
                         "ScrollingFrame",
                         {
-                            Size = UDim2.fromScale(1, 1),
+                            Size = UDim2.new(1, 1, 1, 0),
                             BackgroundTransparency = 0.8,
                             Parent = P.Root,
                             ScrollBarImageTransparency = 1,
                             ScrollBarThickness = 0,
                             BorderSizePixel = 0,
-                            CanvasSize = UDim2.fromScale(0, 2),
+                            CanvasSize = UDim2.new(0, 0, 2, 0),
                             ScrollingDirection = Enum.ScrollingDirection.Y
                         }
                     )
