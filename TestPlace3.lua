@@ -1527,12 +1527,12 @@ local aa = {
                         l(
                         "ImageButton",
                         {
-                            Size = UDim2.new(0.061, 0, 0.098, 0),
+                            Size = UDim2.new(0.065, 0, 0.120, 0),
                             AnchorPoint = Vector2.new(0.5, 0.5),
                             ZIndex = 125,
                             BackgroundTransparency = 1,
                             Parent = q,
-                            Position = p or UDim2.new(0.03, 0, 0.95, 0),
+                            Position = p or UDim2.new(0.033, 0, 0.937, 0),
                             ThemeTag = {Image = "Image"}
                         },
                         {
