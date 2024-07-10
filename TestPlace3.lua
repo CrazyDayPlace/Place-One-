@@ -1527,12 +1527,12 @@ local aa = {
                         l(
                         "ImageButton",
                         {
-                            Size = UDim2.new(0, 60, 0, 60),
+                            Size = UDim2.new(0.061, 0, 0.098, 0),
                             AnchorPoint = Vector2.new(0.5, 0.5),
                             ZIndex = 125,
                             BackgroundTransparency = 1,
                             Parent = q,
-                            Position = p or UDim2.new(0.0320, 0, 0.933, 0),
+                            Position = p or UDim2.new(0.03, 0, 0.95, 0),
                             ThemeTag = {Image = "Image"}
                         },
                         {
@@ -2005,59 +2005,7 @@ local aa = {
             function v.Dialog(N, O)
                 local P = M:Create()
                 P.Title.Text = O.Title
-                local Q
-                local CAW
-                if O.Scroll and O.Scroll == true then
-                    local ZZ =
-                    s(
-                        "Frame",
-                        {
-                            Size = UDim2.new(1, 0, 0, 45),
-                            Parent = P.Root,
-                            Position = UDim2.new(0, 0, 1, -475),
-                            ThemeTag = {BackgroundColor3 = "DialogHolder"}
-                        }
-                    )
-                    local XX = 
-                    s(
-                        "ScrollingFrame",
-                        {
-                            Size = UDim2.new(1, 0, 0.75, 0),
-                            BackgroundTransparency = 0.8,
-                            Parent = P.Root,
-                            ScrollBarImageTransparency = 1,
-                            ScrollBarThickness = 0,
-                            BorderSizePixel = 0,
-                            Position = UDim2.fromOffset(0, 40),
-                            CanvasSize = UDim2.new(0, 0, 2, 0),
-                            ScrollingDirection = Enum.ScrollingDirection.Y
-                        }
-                    )
-                    Q =
-                    s(
-                    "TextLabel",
-                    {
-                        FontFace = Font.new "rbxasset://fonts/families/GothamSSm.json",
-                        Text = O.Content,
-                        TextColor3 = Color3.fromRGB(240, 240, 240),
-                        TextSize = 15,
-                        TextXAlignment = Enum.TextXAlignment.Left,
-                        TextYAlignment = Enum.TextYAlignment.Top,
-                        Size = UDim2.new(1, -40, 1, 0),
-                        Position = UDim2.fromOffset(20, 15),
-                        BackgroundTransparency = 1,
-                        Parent = XX,
-                        ClipsDescendants = false,
-                        ThemeTag = {TextColor3 = "Text"}
-                    }
-                )
-                P.Title.Position = UDim2.fromOffset(0, 10)
-                P.Title.Size = UDim2.new(1, 0, 0, 25)
-                P.Title.TextSize = 20
-                P.Title.TextXAlignment = "Center"
-                P.Title.Parent = ZZ
-                else
-                    Q =
+                local Q =
                     s(
                     "TextLabel",
                     {
@@ -2075,10 +2023,9 @@ local aa = {
                         ThemeTag = {TextColor3 = "Text"}
                     }
                 )
-                end
                 s(
                     "UISizeConstraint",
-                    {MinSize = (CAW or Vector2.new(300, 165)), MaxSize = Vector2.new(620, math.huge), Parent = P.Root}
+                    {MinSize = Vector2.new(300, 165), MaxSize = Vector2.new(620, math.huge), Parent = P.Root}
                 )
                 P.Root.Size = UDim2.fromOffset(Q.TextBounds.X + 40, 165)
                 if Q.TextBounds.X + 40 > v.Size.X.Offset - 120 then
