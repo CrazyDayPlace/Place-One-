@@ -195,7 +195,6 @@ local aa = {
                 Title = D.Title,
                 SubTitle = D.SubTitle,
                 UpdateDate = D.UpdateDate,
-                Scroll = D.Scroll,
                 UpdateLog = D.UpdateLog,
                 IconVisual = D.IconVisual,
                 TabWidth = D.TabWidth
@@ -1528,12 +1527,12 @@ local aa = {
                         l(
                         "ImageButton",
                         {
-                            Size = UDim2.new(0, 60, 0, 60),
+                            Size = UDim2.new(0.044, 0, 0.071, 0),
                             AnchorPoint = Vector2.new(0.5, 0.5),
                             ZIndex = 125,
                             BackgroundTransparency = 1,
                             Parent = q,
-                            Position = p or UDim2.new(0.0320, 0, 0.933, 0),
+                            Position = p or UDim2.new(0.027, 0, 0.957, 0),
                             ThemeTag = {Image = "Image"}
                         },
                         {
@@ -1679,7 +1678,6 @@ local aa = {
             o.Frame,
             function()
                 p.Window:Dialog {
-                    Scroll = n.Scroll or false,
                     Title = n.UpdateDate or "00/00/0000 [V Title]",
                     Content = n.UpdateLog or "● Content",
                     Buttons = {{Title = "Close"}}
@@ -1801,7 +1799,6 @@ local aa = {
                 SubTitle = t.SubTitle,
                 UpdateDate = t.UpdateDate,
                 UpdateLog = t.UpdateLog,
-                Scroll = t.Scroll,
                 IconVisual = t.IconVisual,
                 Parent = v.Root,
                 Window = v
@@ -2008,23 +2005,6 @@ local aa = {
             function v.Dialog(N, O)
                 local P = M:Create()
                 P.Title.Text = O.Title
-                local NIO
-                if O.Scroll and O.Scroll == true then
-                    NIO =
-                    s(
-                    "ScrollingFrame",
-                    {
-                        Size = UDim2.new(1, 0, 1, 0),
-                        BackgroundTransparency = 1,
-                        Parent = P.Root,
-                        ScrollBarImageTransparency = 1,
-                        ScrollBarThickness = 3,
-                        BorderSizePixel = 0,
-                        CanvasSize = UDim2.new(0, 0, 2, 0),
-                        ScrollingDirection = Enum.ScrollingDirection.Y
-                    }
-                    )
-                end
                 local Q =
                     s(
                     "TextLabel",
@@ -2038,7 +2018,7 @@ local aa = {
                         Size = UDim2.new(1, -40, 1, 0),
                         Position = UDim2.fromOffset(20, 60),
                         BackgroundTransparency = 1,
-                        Parent = NIO or P.Root,
+                        Parent = P.Root,
                         ClipsDescendants = false,
                         ThemeTag = {TextColor3 = "Text"}
                     }
@@ -2047,8 +2027,6 @@ local aa = {
                     "UISizeConstraint",
                     {MinSize = Vector2.new(300, 165), MaxSize = Vector2.new(620, math.huge), Parent = P.Root}
                 )
-                P.Title.Parent = NIO or P.Root
-                P.ButtonHolderFrame.ZIndex = 10
                 P.Root.Size = UDim2.fromOffset(Q.TextBounds.X + 40, 165)
                 if Q.TextBounds.X + 40 > v.Size.X.Offset - 120 then
                     P.Root.Size = UDim2.fromOffset(v.Size.X.Offset - 120, 165)
