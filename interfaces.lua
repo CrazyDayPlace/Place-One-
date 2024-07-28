@@ -6,7 +6,7 @@ local InterfaceManager = {} do
         Theme = "Darker",
         Acrylic = true,
         Transparency = false,
-        MenuKeybind = "RightControl",
+        MenuKeybind = "LeftAlt",
         BlackScreen = false
     }
 
