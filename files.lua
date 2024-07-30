@@ -20,7 +20,7 @@ local Folders = {} do
             repeat
                 writefile(file)
                 wat()
-            until isfolder(file)
+            until isfile(file)
         end
     end
 end
