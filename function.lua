@@ -1,4 +1,8 @@
-local Function = {} do
+local Function = {Signals = {}} do
+
+    function Function:AddSignal(a, b, c, d, e, f)
+        table.insert(Function.Signals, {a, b, c, d, e, f})
+    end
 
     function Function:HexColor(q, t)
         local int = math.floor(q.r*255)*256^2+math.floor(q.g*255)*256+math.floor(q.b*255)
@@ -172,6 +176,5 @@ local Function = {} do
 end
 
 return Function
-
 
 
