@@ -15,11 +15,19 @@ local Folders = {} do
             until not isfolder((folder or "CrazyDay"))
         end
     end
-    function Folders:WriteFile(file)
+    function Folders:WriteFile(file, values)
         if not isfile(file) then
             repeat
-                writefile(file)
-                wat()
+                if values then
+                    if type(values) == "table" then
+                        writefile(file, game:GetService("HttpService"):JSONDecode(values))
+                    else
+                        writefile(file, values)
+                    end
+                else
+                    writefile(file, "")
+                end
+                wait()
             until isfile(file)
         end
     end
