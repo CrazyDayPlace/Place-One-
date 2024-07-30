@@ -33,11 +33,20 @@ local Folders = {} do
     end
     function Folders:ListFiles(path, str)
         local TablesOfFiles = {}
-        local Names
+        local Name
+        if not path then return end
         for i,v in ipairs(listfiles(path)) do
-            if str and v.find(v,str) then Names = v:gsub(str, "") else Names = v end
-            if Names.find(Names, ".lua") or Names.find(Names, ".json") then if Names.find(Names, ".lua") then Names = Names:gsub(".lua", "") else Names = Names:gsub(".json", "") end end
-            table.insert(TablesOfFiles, Names)
+            if v:match([[/]]) or v.find(v,[[/]]) then
+                Name = v:gsub([[/]],"")
+                if Name and (Name:match([[\]]) or Name.find(Name,[[\]])) then
+                    Name = Name:gsub([[\]],"")
+                end
+            elseif v:match([[\]]) or v.find(v,[[\]]) then
+                Name = v:gsub([[\]],"")
+            end
+            if Name and Name.find(Name,".lua") then Name = Name:gsub(".lua","") elseif Name and Name.find(Name,".json") then Name = Name:gsub(".json", "") end
+            if str and Name and Name.find(Name,str) then Name = Name:gsub(str,"") end
+            table.insert(TablesOfFiles, Name or v)
         end
         return TablesOfFiles
     end
