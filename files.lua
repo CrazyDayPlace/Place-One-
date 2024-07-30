@@ -7,14 +7,6 @@ local Folders = {} do
             until isfolder((folder or "CrazyDay"))
         end
     end
-    function Folders:DeleteFolder(folder)
-        if isfolder((folder or "CrazyDay")) then
-            repeat
-                delfolder((folder or "CrazyDay"))
-                wait()
-            until not isfolder((folder or "CrazyDay"))
-        end
-    end
     function Folders:WriteFile(file, values)
         if not isfile(file) then
             repeat
@@ -29,6 +21,22 @@ local Folders = {} do
                 end
                 wait()
             until isfile(file)
+        end
+    end
+    function Folders:DeleteFolder(folder)
+        if isfolder((folder or "CrazyDay")) then
+            repeat
+                delfolder((folder or "CrazyDay"))
+                wait()
+            until not isfolder((folder or "CrazyDay"))
+        end
+    end
+    function Folders:DeleteFile(file)
+        if isfile(file) then
+            repeat
+                delfile(file)
+                wait()
+            until not isfile(file)
         end
     end
     function Folders:ListFiles(path, str)
