@@ -42,7 +42,17 @@ local Function = {Signals = {}} do
         return NotationToUse
     end
 
-
+    function Function:StringToNum(q)
+        local TableOfValues = {"k","m","b"}
+        local Number = 1
+        for i,v in pairs(TableOfValues) do
+            q = string.gsub(q,v,function()
+                Number = Number * (10 ^ (i * 3))
+                return ""
+            end)
+        end
+        return Number * q
+    end
 
     function Function:RaidUpdate()
         local q =
