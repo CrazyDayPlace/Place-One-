@@ -928,6 +928,7 @@ local aa = {
             q.Content = q.Content or ""
             q.SubContent = q.SubContent or ""
             q.Show = q.Show
+            q.LabelPos = q.LabelPos or 25
             q.Duration = q.Duration or nil
             q.Buttons = q.Buttons or {}
             local r = {Closed = false, Size = UDim2.new(1, 0, 1, 0)}
@@ -992,7 +993,7 @@ local aa = {
                     AutomaticSize = Enum.AutomaticSize.Y,
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                     BackgroundTransparency = 1,
-                    Position = UDim2.fromOffset(14, 30),
+                    Position = UDim2.fromOffset(14, q.LabelPos),
                     Size = UDim2.new(1, -28, 0, 0)
                 },
                 {
