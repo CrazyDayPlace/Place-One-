@@ -1035,7 +1035,7 @@ local aa = {
             )
             if q.Content == "" then
                 if q.SubContent == "" then
-                    r.Size = UDim2.new(1, 0, 0.785, 0)
+                    r.Size = UDim2.new(1, 0, 0.785, 0) 
                 end
                 r.ContentLabel.Visible = false
             end
@@ -1064,12 +1064,7 @@ local aa = {
             )
             function r.Open(t)
                 local u = r.LabelHolder.AbsoluteSize.Y
-                local Gsubname, Gsubnum = string.gsub(q.SubContent,"\n","")
                 r.Holder.Size = UDim2.new(1, 0, 0, 58 + u)
-                if Gsubnum >= 1 then
-                    local AB = 10 * Gsubnum AB += 15
-                    r.Holder.Size = UDim2.new(r.Holder.Size.X, 0, (r.Holder.Size.Y.Offset + AB))
-                end
                 s:setGoal {Scale = l(0, {frequency = 5}), Offset = l(0, {frequency = 5})}
             end
             function r.Close(t)
