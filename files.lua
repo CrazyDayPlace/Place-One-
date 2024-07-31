@@ -7,32 +7,13 @@ local Folders = {} do
             until isfolder((folder or "CrazyDay"))
         end
     end
-    function Folders:WriteFile(file, values, status)
-        if status and status == "Check" then
-            if not isfile(file) then
-                repeat
-                    if values then
-                        if type(values) == "table" then
-                            writefile(file, game:GetService("HttpService"):JSONDecode(values))
-                        else
-                            writefile(file, values)
-                        end
-                    elseif not values then
-                        writefile(file, "")
-                    end
-                    task.wait()
-                until isfile(file)
-            end
-        else
-            if values then
-                if type(values) == "table" then
-                    writefile(file, game:GetService("HttpService"):JSONDecode(values))
-                else
-                    writefile(file, values)
-                end
-            elseif not values then
-                writefile(file, "")
-            end
+    function Folders:CheckFiles(file, val)
+        if not file then return end
+        if not isfile(file) then
+            repeat
+                writefile(file, val)
+                wait()
+            until isfile(file)
         end
     end
     function Folders:DeleteFolder(folder)
