@@ -928,7 +928,7 @@ local aa = {
             q.Content = q.Content or ""
             q.SubContent = q.SubContent or ""
             q.Show = q.Show
-            q.LabelPos = q.LabelPos or 25
+            q.LabelPos = q.LabelPos or 35
             q.Duration = q.Duration or nil
             q.Buttons = q.Buttons or {}
             local r = {Closed = false, Size = UDim2.new(1, 0, 1, 0)}
