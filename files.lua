@@ -8,19 +8,21 @@ local Folders = {} do
         end
     end
     function Folders:WriteFile(file, values, status)
-        if status and status == "Check" and not isfile(file) then
-            repeat
-                if values then
-                    if type(values) == "table" then
-                        writefile(file, game:GetService("HttpService"):JSONDecode(values))
-                    else
-                        writefile(file, values)
+        if status and status == "Check" then
+            if not isfile(file) then
+                repeat
+                    if values then
+                        if type(values) == "table" then
+                            writefile(file, game:GetService("HttpService"):JSONDecode(values))
+                        else
+                            writefile(file, values)
+                        end
+                    elseif not values then
+                        writefile(file, "")
                     end
-                else
-                    writefile(file, "")
-                end
-                wait()
-            until isfile(file)
+                    task.wait()
+                until isfile(file)
+            end
         else
             if values then
                 if type(values) == "table" then
@@ -28,7 +30,7 @@ local Folders = {} do
                 else
                     writefile(file, values)
                 end
-            else
+            elseif not values then
                 writefile(file, "")
             end
         end
