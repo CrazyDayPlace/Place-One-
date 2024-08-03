@@ -152,7 +152,6 @@ local SaveManager = {} do
 	function SaveManager:BuildConfigSection(tab)
 		assert(self.Library, "Must set SaveManager.Library")
 
-		self:Load("Configuration")
 		local section = tab:AddSection("Configuration")
 		section:AddToggle("Auto Save", {
 			Title = "Auto Save",
@@ -198,6 +197,7 @@ local SaveManager = {} do
             end
         })
 
+		self:Load("Configuration")
 		for idx, val in next, SaveManager.Options do
 			if self.Ignore[idx] then continue end
 			val:OnChanged(function (Value)
