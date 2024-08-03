@@ -152,14 +152,14 @@ local SaveManager = {} do
 	function SaveManager:BuildConfigSection(tab)
 		assert(self.Library, "Must set SaveManager.Library")
 
-		self:Load("Configuration")
+		SaveManager:Load("Configuration")
 		local section = tab:AddSection("Configuration")
 		section:AddToggle("Auto Save", {
 			Title = "Auto Save",
 			Description = nil,
 			Default = true,
-			Callback = function()
-				self:Save("Configuration")
+			Callback = function(Value)
+				SaveManager:Save("Configuration")
 			end
 		})
 
@@ -202,7 +202,7 @@ local SaveManager = {} do
 			if self.Ignore[idx] then continue end
 			val:OnChanged(function (Value)
 				if SaveManager.Options["Auto Save"].Value then
-					self:Save("Configuration")
+					SaveManager:Save("Configuration")
 				end
 			end)
 		end
