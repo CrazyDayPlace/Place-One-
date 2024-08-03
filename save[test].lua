@@ -164,28 +164,37 @@ local SaveManager = {} do
 		})
 
 		section:AddButton({
-            Title = "Reset config",
+            Title = "Reset Configuration",
             Callback = function()
-				for idx, option in next, SaveManager.Options do
-					if self.Ignore[idx] then continue end
-					if option.Type == "Dropdown" then
-						if option.Multi == true then
-							option:SetValue({nil})
-						else
-							option:SetValue(nil)
-						end
-					elseif option.Type == "Toggle" and not table.find({"Auto Save"}, idx) then
-						    option:SetValue(false)
-					elseif option.Type == "Slider" then
-						    option:SetValue(0)
-					elseif option.Type == "Input" then
-						    option:SetValue("")
-					elseif option.Type == "Keybind" then
-						    option:SetValue("", option.Mode)
-					elseif option.Type == "Colorpicker" then
-						    option:SetValueRGB(Color3.fromRGB(0, 0, 0))
-					end
-				end
+				self.Library.Window:Dialog({
+					Title = "Configuration",
+					Content = "Are you sure you want to reset the configuration?",
+					Buttons = {
+						{Title = "Yes", Callback = function()
+							for idx, option in next, SaveManager.Options do
+								if self.Ignore[idx] then continue end
+								if option.Type == "Dropdown" then
+									if option.Multi == true then
+										option:SetValue({nil})
+									else
+										option:SetValue(nil)
+									end
+								elseif option.Type == "Toggle" and not table.find({"Auto Save"}, idx) then
+										option:SetValue(false)
+								elseif option.Type == "Slider" then
+										option:SetValue(0)
+								elseif option.Type == "Input" then
+										option:SetValue("")
+								elseif option.Type == "Keybind" then
+										option:SetValue("", option.Mode)
+								elseif option.Type == "Colorpicker" then
+										option:SetValueRGB(Color3.fromRGB(0, 0, 0))
+								end
+							end
+						end},
+						{Title = "No"}
+					}
+				})
             end
         })
 
