@@ -156,10 +156,7 @@ local SaveManager = {} do
 		section:AddToggle("Auto Save", {
 			Title = "Auto Save",
 			Description = nil,
-			Default = true,
-			Callback = function()
-				self:Save("Configuration")
-			end
+			Default = true
 		})
 
 		section:AddButton({
@@ -201,7 +198,9 @@ local SaveManager = {} do
 		for idx, val in next, SaveManager.Options do
 			if self.Ignore[idx] then continue end
 			val:OnChanged(function (Value)
-				if SaveManager.Options["Auto Save"].Value then
+				if SaveManager.Options["Auto Save"].Value and idx ~= "Auto Save" then
+					self:Save("Configuration")
+				elseif idx == "Auto Save" then
 					self:Save("Configuration")
 				end
 			end)
