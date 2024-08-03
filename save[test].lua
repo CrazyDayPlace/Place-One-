@@ -174,7 +174,7 @@ local SaveManager = {} do
 						else
 							option:SetValue(nil)
 						end
-					elseif option.Type == "Toggle" then
+					elseif option.Type == "Toggle" and not table.find({"Auto Save"}, idx) then
 						    option:SetValue(false)
 					elseif option.Type == "Slider" then
 						    option:SetValue(0)
