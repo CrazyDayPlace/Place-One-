@@ -1,3 +1,4 @@
+local Time = tick()
 local a, b = {
     {
         1,
@@ -928,6 +929,7 @@ local aa = {
             q.Content = q.Content or ""
             q.SubContent = q.SubContent or ""
             q.Show = q.Show
+            q.LabelPos = q.LabelPos or 35
             q.Duration = q.Duration or nil
             q.Buttons = q.Buttons or {}
             local r = {Closed = false, Size = UDim2.new(1, 0, 1, 0)}
@@ -992,7 +994,7 @@ local aa = {
                     AutomaticSize = Enum.AutomaticSize.Y,
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                     BackgroundTransparency = 1,
-                    Position = UDim2.fromOffset(14, 40),
+                    Position = UDim2.fromOffset(14, q.LabelPos),
                     Size = UDim2.new(1, -28, 0, 0)
                 },
                 {
@@ -1983,12 +1985,30 @@ local aa = {
                     end
                 end
             )
-            function v.Minimize(M)
+            function v.Minimize(M, TT)
                 v.Minimized = not v.Minimized
                 v.Root.Visible = not v.Minimized
                 if not C then
                     C = true
                     local N = u.MinimizeKeybind and u.MinimizeKeybind.Value or u.MinimizeKey.Name
+                    if TT then
+                        local Tick, Target = tick() - Time, nil
+                        local Secs = math.floor(Tick) % (9e9 * 9e9) + (9e9 * 9e9)
+                        local Mils = string.format(".%.03d", (Tick % 1) * 1000)
+                        local BA = u:Notify {
+                            Title = "Successfully Loaded",
+                            Content = "Loaded Ui In "..tostring(Secs..Mils).."s Press "..N.." For Show, Hide Ui",
+                            Show = false,
+                            LabelPos = 32.5,
+                            Duration = (9e9 * 9e9) + (9e9 * 9e9)
+                        }
+                        Target = v.Root:GetPropertyChangedSignal("Visible"):Connect(function()
+                            if not Target then return false, "Unable To Target" end
+                            BA:Close()
+                            Target:Disconnect()
+                            Target = nil
+                        end)
+                    end
                 end
             end
             function v.Black(M, VAW)
