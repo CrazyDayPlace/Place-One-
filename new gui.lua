@@ -409,7 +409,7 @@ local aa = {
                     j(
                         "Frame",
                         {
-                            BackgroundTransparency = 0.45,
+                            BackgroundTransparency = 0,
                             Size = UDim2.fromScale(1, 1),
                             Name = "Background",
                             ThemeTag = {BackgroundColor3 = "AcrylicMain"}
@@ -1999,9 +1999,10 @@ local aa = {
                             Title = "Successfully Loaded",
                             SubContent = "Loaded Ui In "..tostring(Secs..Mils).."s Press "..N.." For Show, Hide Ui",
                             Show = false,
-                            LabelPos = 32.5,
+                            LabelPos = 35,
                             Duration = (9e9 * 9e9) + (9e9 * 9e9)
                         }
+                        BA.Holder.Size = UDim2.new(1,0,0,75)
                         Target = v.Root:GetPropertyChangedSignal("Visible"):Connect(function()
                             if not Target then return false, "Unable To Target" end
                             BA:Close()
