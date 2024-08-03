@@ -1,4 +1,4 @@
-local Time = tick()
+local Time, BackgroundOfNotify = tick(), 0.35
 local a, b = {
     {
         1,
@@ -237,6 +237,11 @@ local aa = {
         function x.ToggleTransparency(C, D)
             if x.Window then
                 x.Window.AcrylicPaint.Frame.Background.BackgroundTransparency = D and 0.35 or 0
+                if D and D == true then
+                    BackgroundOfNotify = 0.35
+                else
+                    BackgroundOfNotify = 0
+                end
             end
         end
         function x.Notify(C, D)
@@ -409,7 +414,7 @@ local aa = {
                     j(
                         "Frame",
                         {
-                            BackgroundTransparency = 0,
+                            BackgroundTransparency = BackgroundOfNotify,
                             Size = UDim2.fromScale(1, 1),
                             Name = "Background",
                             ThemeTag = {BackgroundColor3 = "AcrylicMain"}
