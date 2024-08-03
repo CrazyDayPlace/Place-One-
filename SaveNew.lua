@@ -197,13 +197,17 @@ local SaveManager = {} do
 		self:Load("Configuration")
 		for idx, val in next, SaveManager.Options do
 			if self.Ignore[idx] then continue end
-			val:OnChanged(function (Value)
-				if SaveManager.Options["Auto Save"].Value and idx ~= "Auto Save" then
+			if idx == "Auto Save" then
+				val:OnChanged(function (Value)
 					self:Save("Configuration")
-				elseif idx == "Auto Save" then
-					self:Save("Configuration")
-				end
-			end)
+				end)
+			else
+				val:OnChanged(function (Value)
+					if SaveManager.Options["Auto Save"].Value then
+						self:Save("Configuration")
+					end
+				end)
+			end
 		end
 	end
 
